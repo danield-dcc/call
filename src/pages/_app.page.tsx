@@ -1,6 +1,7 @@
 import { globalStyles } from '@/styles/global'
 import { Roboto } from 'next/font/google'
 import type { AppProps } from 'next/app'
+import { SessionProvider } from 'next-auth/react'
 
 const roboto = Roboto({
   weight: ['400', '500', '700'],
@@ -11,10 +12,15 @@ const roboto = Roboto({
 
 globalStyles()
 
-export default function App({ Component, pageProps }: AppProps) {
+export default function App({
+  Component,
+  pageProps: { session, ...pageProps },
+}: AppProps) {
   return (
-    <main className={roboto.className}>
-      <Component {...pageProps} />
-    </main>
+    <SessionProvider session={session}>
+      <main className={roboto.className}>
+        <Component {...pageProps} />
+      </main>
+    </SessionProvider>
   )
 }
