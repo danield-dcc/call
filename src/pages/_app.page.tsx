@@ -1,3 +1,4 @@
+import '@/lib/dayjs'
 import { globalStyles } from '@/styles/global'
 import { Roboto } from 'next/font/google'
 import type { AppProps } from 'next/app'
