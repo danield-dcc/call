@@ -1,3 +1,5 @@
+import SEO from '@/lib/seo'
+import { DefaultSeo } from 'next-seo'
 import '@/lib/dayjs'
 import { globalStyles } from '@/styles/global'
 import { Roboto } from 'next/font/google'
@@ -23,6 +25,7 @@ export default function App({
     <QueryClientProvider client={queryClient}>
       <SessionProvider session={session}>
         <main className={roboto.className}>
+          <DefaultSeo {...SEO} />
           <Component {...pageProps} />
         </main>
       </SessionProvider>
